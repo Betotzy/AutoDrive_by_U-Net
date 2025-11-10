@@ -82,25 +82,25 @@ Output model akan disimpan dalam folder weights/ jika ditambahkan.
 
 Notebook mencakup:
 
-Prediksi mask pada gambar uji
+* Prediksi mask pada gambar uji
 
-Plot perbandingan image, mask, dan prediction
+* Plot perbandingan image, mask, dan prediction
 
 Fungsi tersedia di utils.py:
 
-plot_sample()
+* plot_sample()
 
-visualize_training()
+* visualize_training()
 
 7. Model Architecture
 
 File model.py menyediakan:
 
-Conv block
+* Conv block
 
-Encoder block
+* Encoder block
 
-Decoder block
+* Decoder block
 
 Fungsi build_unet() untuk menghasilkan model siap pakai.
 
