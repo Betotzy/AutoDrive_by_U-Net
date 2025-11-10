@@ -1,38 +1,41 @@
-U-Net for Autonomous Driving Segmentation
+🚗 U-Net Autonomous Driving Segmentation
 
-Project ini berisi implementasi model U-Net untuk melakukan semantic segmentation pada citra berkaitan dengan lingkungan berkendara (autonomous driving). Model dibangun, dilatih, dan diuji menggunakan dataset citra jalan beserta mask segmentasinya.
+Selamat datang di project segmentasi gambar untuk kebutuhan autonomous driving. Proyek ini membangun model U-Net dari nol untuk memprediksi mask jalan atau objek tertentu dari citra kamera. Semua dirancang biar gampang dipakai, gampang dibaca, dan tentu saja gampang dikembangkan.
 
-Tujuan utama project ini adalah menghasilkan model yang mampu memisahkan area jalan, marka, atau objek tertentu dari gambar input.
+✨ Kenapa Project Ini Keren?
 
-1. Fitur Utama
+Dibangun dari arsitektur U-Net klasik yang terbukti kuat buat tugas segmentasi.
 
-Implementasi arsitektur U-Net dari nol.
+Kode udah dipisah jadi model.py, dataset.py, dan utils.py supaya rapih.
 
-Training dan evaluasi model langsung melalui notebook.
+Notebook utama langsung siap buat training, evaluasi, dan visualisasi.
 
-Visualisasi mask prediksi.
+Bisa kamu modifikasi bebas buat dataset lain.
 
-Modularisasi kode ke dalam file terpisah: model.py, dataset.py, dan utils.py.
+📂 Struktur Repository
 
-2. Struktur Project
 .
 ├── AutoDriv_U_Net.ipynb        # Notebook utama
 ├── model.py                     # Arsitektur U-Net
-├── dataset.py                   # Dataset loader
-├── utils.py                     # Visualisasi & helper
-├── results/                     # (Opsional) Contoh hasil prediksi
-├── weights/                     # (Opsional) Model terlatih
-├── requirements.txt             # Dependency
-└── README.md                    # Dokumentasi project
-3. Dataset
+├── dataset.py                   # Loader dataset
+├── utils.py                     # Fungsi visualisasi & helper
+├── requirements.txt             # Dependency project
+├── results/                     # (Opsional) Hasil prediksi
+└── weights/                     # (Opsional) Model terlatih
 
-Notebook menggunakan dataset berbasis citra jalan. Pastikan kamu memiliki:
+🧠 U-Net: Singkatnya
 
-Folder berisi gambar input.
+U-Net terdiri dari dua jalur:
 
-Folder berisi mask biner (0 dan 1).
+Encoder buat menangkap konteks
 
-Struktur umum dataset:
+Decoder buat menebalkan detail dan memprediksi mask
+
+Dengan skip-connection, model bisa mempertahankan informasi spatial secara akurat.
+
+🗂 Dataset
+
+Gunakan dataset yang punya struktur seperti ini:
 
 Dataset/
 ├── images/
@@ -44,76 +47,61 @@ Dataset/
     ├── img_2.png
     └── ...
 
-Masukkan path dataset ke dalam notebook sebelum training.
+Mask idealnya grayscale dengan nilai 0 dan 1.
 
-4. Cara Menjalankan
+Dataset tidak disertakan untuk menjaga ukuran repo tetap ringan.
 
-1. Clone repository:
+▶ Cara Menjalankan Project
+
+Clone repository:
 
 git clone <repo-url>
 
-2. Install dependency:
+Install dependency:
 
 pip install -r requirements.txt
 
-3. Jalankan notebook:
+Jalankan notebook:
 
 jupyter notebook AutoDriv_U_Net.ipynb
 
-Sesuaikan path dataset sebelum mulai training.
+Sesuaikan path dataset dan mulai training.
 
-5. Training Model
-
-Model dibangun menggunakan U-Net standard dengan encoder dan decoder block.
+🔍 Training & Evaluasi
 
 Notebook menyediakan:
 
-Preprocessing gambar dan mask
+Training loop
 
-Data generator
+Loss curve
 
-Training loop menggunakan model.fit
+Visualisasi perbandingan image – mask – prediction
 
-Visualisasi training loss
+Simpan model otomatis (opsional)
 
-Output model akan disimpan dalam folder weights/ jika ditambahkan.
+Kamu juga bisa pakai utilitas dari utils.py:
 
-6. Evaluasi & Visualisasi
+plot_sample() buat menampilkan 1 sample prediksi
 
-Notebook mencakup:
+visualize_training() buat grafik loss
 
-* Prediksi mask pada gambar uji
+🎯 Hasil Prediksi
 
-* Plot perbandingan image, mask, dan prediction
+Hasil prediksi bisa kamu simpan dalam folder results/.
+Kalau mau, tambahkan beberapa sample ke README ini buat showcase.
 
-Fungsi tersedia di utils.py:
+🤝 Kontribusi
 
-* plot_sample()
+Feel free buat fork project ini, tambah fitur kayak:
 
-* visualize_training()
+Data augmentation
 
-7. Model Architecture
+IoU / Dice evaluation
 
-File model.py menyediakan:
+U-Net++ atau Attention U-Net
 
-* Conv block
+Deployment ke Streamlit / HuggingFace Spaces
 
-* Encoder block
+📜 Lisensi
 
-* Decoder block
-
-Fungsi build_unet() untuk menghasilkan model siap pakai.
-
-Arsitektur sesuai dengan U-Net versi klasik.
-
-8. Catatan
-
-Dataset tidak disertakan dalam repository.
-
-Untuk hasil optimal, lakukan augmentasi data (bisa ditambahkan ke dataset.py).
-
-Pastikan GPU aktif saat mengerjakan di Google Colab.
-
-9. Lisensi
-
-Silakan gunakan project ini untuk pembelajaran, penelitian, atau modifikasi bebas sesuai kebutuhan.
+Silakan digunakan secara bebas untuk pembelajaran maupun riset.
